@@ -5,15 +5,16 @@
 #include <unordered_map>
 #include <vector>
 
+using namespace std;
 struct AeropuertoReto3 {
-    std::string id;
-    std::string iata;
+    string id;
+    string iata;
     double lat;
     double lon;
-    std::string nombre;
+    string nombre;
 };
 
-void reto3DiameTroDijkstra(const std::unordered_map<std::string, AeropuertoReto3>& aeropuertos, 
-                           std::unordered_map<std::string, std::vector<std::string>>& grafo);
+void reto3DiameTroDijkstra(const unordered_map<string, AeropuertoReto3>& aeropuertos, 
+                           unordered_map<string, vector<string>>& grafo);
 
 #endif

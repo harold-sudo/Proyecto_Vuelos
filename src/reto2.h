@@ -5,7 +5,8 @@
 #include <unordered_map>
 #include <vector>
 
-void reto2Kosaraju(const std::vector<std::string>& todos_los_ids, 
-                   std::unordered_map<std::string, std::vector<std::string>>& grafo);
+using namespace std;
+void reto2Kosaraju(const vector<string>& todos_los_ids, 
+                   unordered_map<string,vector<string>>& grafo);
 
 #endif

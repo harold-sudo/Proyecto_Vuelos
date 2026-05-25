@@ -5,17 +5,18 @@
 #include <unordered_map>
 #include <vector>
 
+using namespace std;
 // Necesitamos la estructura básica para mapear datos
 struct AeropuertoReto1 {
-    std::string id;
-    std::string iata;
+    string id;
+    string iata;
     double lat;
     double lon;
-    std::string nombre;
+    string nombre;
 };
 
-void reto1AlcanceBFS(const std::string& consulta, 
-                     const std::unordered_map<std::string, AeropuertoReto1>& aeropuertos, 
-                     std::unordered_map<std::string, std::vector<std::string>>& grafo);
+void reto1AlcanceBFS(const string& consulta, 
+                     const unordered_map<string, AeropuertoReto1>& aeropuertos, 
+                     unordered_map<string,vector<string>>& grafo);
 
 #endif

@@ -8,6 +8,7 @@
 #include "reto1.h"
 #include "reto2.h"
 #include "reto3.h"
+#include "reto5.h"
 
 using namespace std;
 
@@ -89,11 +90,13 @@ int main() {
     // Adaptar estructuras base a los tipos esperados por los retos modulares
     unordered_map<string, AeropuertoReto1> mapa_r1;
     unordered_map<string, AeropuertoReto3> mapa_r3;
+    unordered_map<string, AeropuertoReto5> mapa_r5;
     vector<string> todos_los_ids;
 
     for (auto const& [id, a] : mapa_base) {
         mapa_r1[id] = {a.id, a.iata, a.lat, a.lon, a.nombre};
         mapa_r3[id] = {a.id, a.iata, a.lat, a.lon, a.nombre};
+        mapa_r5[id] = {a.id, a.iata, a.lat, a.lon, a.nombre};
         todos_los_ids.push_back(id);
     }
 
@@ -105,8 +108,9 @@ int main() {
         cout << "1. Reto 1: Alcance Personalizado (BFS)" << endl;
         cout << "2. Reto 2: Grupos y Aislamiento Aereo (Kosaraju)" << endl;
         cout << "3. Reto 3: Maxima Eficiencia / Diametro (Dijkstra)" << endl;
-        cout << "4. Salir del programa" << endl;
-        cout << "Seleccione una opcion (1-4): ";
+        cout << "4. Reto 5: El Pasajero Leal (una sola aerolinea)" << endl;
+        cout << "5. Salir del programa" << endl;
+        cout << "Seleccione una opcion (1-5): ";
         cin >> opcion;
 
         if (opcion == 1) {
@@ -122,7 +126,10 @@ int main() {
         else if (opcion == 3) {
             reto3DiameTroDijkstra(mapa_r3, grafo);
         }
-    } while (opcion != 4);
+        else if (opcion == 4) {
+            reto5PasajeroLeal(mapa_r5);
+        }
+    } while (opcion != 5);
 
     cout << "\n¡Programa finalizado correctamente!" << endl;
     return 0;
