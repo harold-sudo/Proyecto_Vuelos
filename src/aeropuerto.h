@@ -6,7 +6,8 @@
 
 using namespace std;
 
-struct Aeropuerto {
+struct Aeropuerto 
+{
     string id;
     string iata;
     double lat;
@@ -15,7 +16,8 @@ struct Aeropuerto {
 };
 
 // Calcula distancia en km entre dos coordenadas (Haversine)
-inline double calcularDistanciaHaversine(double lat1, double lon1, double lat2, double lon2) {
+inline double calcularDistanciaHaversine(double lat1, double lon1, double lat2, double lon2) 
+{
     constexpr double RADIO_TERRESTRE = 6371.0;
     constexpr double PI = 3.14159265358979323846;
 
@@ -36,6 +38,9 @@ inline double calcularDistanciaHaversine(double lat1, double lon1, double lat2, 
 }
 
 
-inline double calcularHaversine(double lat1, double lon1, double lat2, double lon2) { return calcularDistanciaHaversine(lat1, lon1, lat2, lon2); }
+inline double calcularHaversine(double lat1, double lon1, double lat2, double lon2) 
+{ 
+    return calcularDistanciaHaversine(lat1, lon1, lat2, lon2); 
+}
 
 #endif
