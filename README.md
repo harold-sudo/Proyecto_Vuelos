@@ -281,6 +281,21 @@ while (getline(archivo, linea)) {
 
 ---
 
+## Notebook `ProyectoAnálisis.ipynb`
+
+El notebook del proyecto cumple la función de preparación de datos. Su propósito no es resolver los retos algorítmicos, sino limpiar la fuente original y exportar archivos más simples para que el programa en C++ trabaje con una entrada consistente.
+
+En resumen, el notebook:
+
+- Lee `airports.dat` y `routes.dat` del dataset OpenFlights.
+- Filtra registros vacíos, inválidos o incompletos.
+- Elimina rutas duplicadas.
+- Genera `airports_clean.dat` y `routes_clean.dat`.
+
+Esa separación es útil porque deja el código C++ enfocado únicamente en los algoritmos de grafo: BFS para el reto 1, Kosaraju para el reto 2, Dijkstra con Haversine para el reto 3 y la versión filtrada por aerolínea para el reto bonus.
+
+---
+
 ## Siguientes pasos y recomendaciones
 
 - Si quieres que elimine por completo cualquier `std::` redundante (es decir, usar `string` en todo el código), puedo aplicar cambios consistentes en todos los `.cpp` y `.h` del proyecto.
