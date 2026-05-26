@@ -9,29 +9,26 @@
 #include "reto2.h"
 #include "reto3.h"
 #include "reto5.h"
+#include "aeropuerto.h"
 
 using namespace std;
 
-// Estructura interna para usar dentro del Main durante la carga
-struct Aeropuerto {
-    string id;
-    string iata;
-    double lat;
-    double lon;
-    string nombre;
-};
+// Usamos 'Aeropuerto' definido en aeropuerto.h
 
-unordered_map<string, Aeropuerto> cargarAeropuertos(const string& ruta) {
+unordered_map<string, Aeropuerto> cargarAeropuertos(const string& ruta) 
+{
     unordered_map<string, Aeropuerto> mapa;
     ifstream archivo(ruta);
     string linea;
 
-    if (!archivo.is_open()) {
+    if (!archivo.is_open()) 
+    {
         cout << "Error: No se pudo abrir el archivo " << ruta << endl;
         return mapa;
     }
 
-    while (getline(archivo, linea)) {
+    while (getline(archivo, linea)) 
+    {
         if (linea.empty()) continue;
         stringstream ss(linea);
         string id, iata, s_lat, s_lon, nombre;
@@ -50,18 +47,21 @@ unordered_map<string, Aeropuerto> cargarAeropuertos(const string& ruta) {
     return mapa;
 }
 
-unordered_map<string, vector<string>> cargarGrafo(const string& ruta) {
+unordered_map<string, vector<string>> cargarGrafo(const string& ruta) 
+{
     unordered_map<string, vector<string>> grafo;
     ifstream archivo(ruta);
     string linea;
 
-    if (!archivo.is_open()) {
+    if (!archivo.is_open()) 
+    {
         cout << "Error: No se pudo abrir el archivo " << ruta << endl;
         return grafo;
     }
 
     int conteo = 0;
-    while (getline(archivo, linea)) {
+    while (getline(archivo, linea)) 
+    {
         if (linea.empty()) continue;
         stringstream ss(linea);
         string origen, destino;
@@ -77,12 +77,14 @@ unordered_map<string, vector<string>> cargarGrafo(const string& ruta) {
     return grafo;
 }
 
-int main() {
+int main() 
+{
     // Cargar estructuras principales
     unordered_map<string, Aeropuerto> mapa_base = cargarAeropuertos("airports_clean.dat");
     unordered_map<string, vector<string>> grafo = cargarGrafo("routes_clean.dat");
 
-    if (mapa_base.empty() || grafo.empty()) {
+    if (mapa_base.empty() || grafo.empty()) 
+    {
         cout << "Error critico: Verifica la existencia de 'airports_clean.dat' y 'routes_clean.dat'." << endl;
         return 1;
     }
@@ -93,7 +95,8 @@ int main() {
     unordered_map<string, AeropuertoReto5> mapa_r5;
     vector<string> todos_los_ids;
 
-    for (auto const& [id, a] : mapa_base) {
+    for (auto const& [id, a] : mapa_base) 
+    {
         mapa_r1[id] = {a.id, a.iata, a.lat, a.lon, a.nombre};
         mapa_r3[id] = {a.id, a.iata, a.lat, a.lon, a.nombre};
         mapa_r5[id] = {a.id, a.iata, a.lat, a.lon, a.nombre};
@@ -113,7 +116,8 @@ int main() {
         cout << "Seleccione una opcion (1-5): ";
         cin >> opcion;
 
-        if (opcion == 1) {
+        if (opcion == 1) 
+        {
             string consulta;
             cout << "Ingrese codigo IATA o nombre del aeropuerto: ";
             cin.ignore();
@@ -127,7 +131,8 @@ int main() {
             reto3DiameTroDijkstra(mapa_r3, grafo);
         }
         else if (opcion == 4) {
-            reto5PasajeroLeal(mapa_r5);
+            
+            reto5PasajeroLeal(mapa_r5, "");
         }
     } while (opcion != 5);
 

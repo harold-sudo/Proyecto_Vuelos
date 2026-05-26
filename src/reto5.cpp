@@ -15,9 +15,6 @@ using namespace std;
 
 namespace {
 
-const double RADIO_TERRESTRE = 6371.0;
-const double PI = 3.14159265358979323846;
-
 struct DatosConsultaReto5 {
     string origen;
     string destino;
@@ -29,26 +26,6 @@ string normalizarTexto(string texto) {
         return static_cast<char>(toupper(caracter));
     });
     return texto;
-}
-
-double gradosARadianes(double grados) {
-    return grados * PI / 180.0;
-}
-
-double calcularDistanciaHaversine(double latitud1, double longitud1, double latitud2, double longitud2) {
-    double latitud1_radianes = gradosARadianes(latitud1);
-    double longitud1_radianes = gradosARadianes(longitud1);
-    double latitud2_radianes = gradosARadianes(latitud2);
-    double longitud2_radianes = gradosARadianes(longitud2);
-
-    double diferencia_longitud = longitud2_radianes - longitud1_radianes;
-    double diferencia_latitud = latitud2_radianes - latitud1_radianes;
-
-    double valor_a = pow(sin(diferencia_latitud / 2.0), 2) +
-                     cos(latitud1_radianes) * cos(latitud2_radianes) * pow(sin(diferencia_longitud / 2.0), 2);
-    double valor_c = 2.0 * atan2(sqrt(valor_a), sqrt(1.0 - valor_a));
-
-    return RADIO_TERRESTRE * valor_c;
 }
 
 vector<string> obtenerRutasPosibles(const string& ruta_rutas) {

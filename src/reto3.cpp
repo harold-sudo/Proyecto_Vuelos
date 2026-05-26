@@ -6,29 +6,6 @@
 
 using namespace std;
 
-// Constantes matemáticas internas para Haversine
-const double RADIO_TERRESTRE = 6371.0;
-const double PI = 3.14159265358979323846;
-
-double gradosARadianes(double grados) {
-    return grados * PI / 180.0;
-}
-
-double calcularHaversine(double lat1, double lon1, double lat2, double lon2) {
-    double lat1_rad = gradosARadianes(lat1);
-    double lon1_rad = gradosARadianes(lon1);
-    double lat2_rad = gradosARadianes(lat2);
-    double lon2_rad = gradosARadianes(lon2);
-
-    double dlon = lon2_rad - lon1_rad;
-    double dlat = lat2_rad - lat1_rad;
-
-    double a = pow(sin(dlat / 2.0), 2) + cos(lat1_rad) * cos(lat2_rad) * pow(sin(dlon / 2.0), 2);
-    double c = 2.0 * atan2(sqrt(a), sqrt(1.0 - a));
-
-    return RADIO_TERRESTRE * c;
-}
-
 void reto3DiameTroDijkstra(const unordered_map<string, AeropuertoReto3>& aeropuertos, unordered_map<string, vector<string>>& grafo) {
     double max_distancia_total = 0.0;
     string id_origen_lejano = "", id_destino_lejano = "";
