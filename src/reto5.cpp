@@ -123,9 +123,12 @@ unordered_map<string, vector<string>> cargarGrafoDeAerolinea(const string& ruta_
         }
 
         stringstream flujo(linea);
-        string codigo_linea, origen_iata, origen_id, destino_iata, destino_id;
+        string codigo_linea, airline_id, origen_iata, origen_id, destino_iata, destino_id;
 
+        // Formato esperado en data/routes.dat:
+        // airline, airline_id, source_iata, source_id, dest_iata, dest_id, ...
         getline(flujo, codigo_linea, ',');
+        getline(flujo, airline_id, ','); // campo no usado, descartado
         getline(flujo, origen_iata, ',');
         getline(flujo, origen_id, ',');
         getline(flujo, destino_iata, ',');
